@@ -24,7 +24,13 @@ export const dictionaries = {
       f2Title: "Kết nối an toàn",
       f2Desc: "Gửi lời mời kết nối, chỉ trò chuyện khi cả hai đồng ý.",
       f3Title: "Học có kế hoạch",
-      f3Desc: "Chat và đặt lịch học chung ngay trong ứng dụng."
+      f3Desc: "Chat và đặt lịch học chung ngay trong ứng dụng.",
+      howTitle: "Bắt đầu trong 3 bước",
+      how1: "Tạo hồ sơ với môn học, thành phố và giờ rảnh của bạn",
+      how2: "Kết nối với những bạn học được gợi ý phù hợp nhất",
+      how3: "Trò chuyện và đặt lịch học chung ngay trong app",
+      freeNote: "Miễn phí 100% cho học sinh, sinh viên",
+      safeNote: "An toàn: có báo cáo & chặn người dùng"
     },
     auth: {
       loginTitle: "Đăng nhập",
@@ -45,6 +51,9 @@ export const dictionaries = {
     },
     profile: {
       title: "Hồ sơ của tôi",
+      avatar: "Ảnh đại diện",
+      changeAvatar: "Đổi ảnh",
+      uploading: "Đang tải ảnh lên...",
       subtitle: "Hồ sơ đầy đủ giúp gợi ý bạn học chính xác hơn.",
       name: "Họ và tên",
       school: "Trường",
@@ -147,6 +156,20 @@ export const dictionaries = {
       cancelled: "Đã hủy",
       empty: "Chưa có lịch học nào."
     },
+    safety: {
+      report: "Báo cáo",
+      block: "Chặn",
+      unblock: "Bỏ chặn",
+      reportReason: "Lý do báo cáo (không bắt buộc):",
+      reported: "Đã gửi báo cáo. Cảm ơn bạn đã giúp cộng đồng an toàn hơn!",
+      blockConfirm: "Chặn người này? Hai bạn sẽ không nhìn thấy nhau và không thể nhắn tin cho nhau nữa.",
+      blocked: "Đã chặn người dùng này."
+    },
+    footer: {
+      terms: "Điều khoản sử dụng",
+      privacy: "Chính sách quyền riêng tư",
+      tagline: "Được tạo với 💗 dành cho người học"
+    },
     common: {
       loading: "Đang tải...",
       close: "Đóng",
@@ -176,7 +199,13 @@ export const dictionaries = {
       f2Title: "Safe connections",
       f2Desc: "Send a connection request — chat only when both sides agree.",
       f3Title: "Study with a plan",
-      f3Desc: "Chat and schedule study sessions right inside the app."
+      f3Desc: "Chat and schedule study sessions right inside the app.",
+      howTitle: "Get started in 3 steps",
+      how1: "Create a profile with your subjects, city and free time",
+      how2: "Connect with your best-matched study partners",
+      how3: "Chat and schedule study sessions in the app",
+      freeNote: "100% free for students",
+      safeNote: "Safe: report & block users"
     },
     auth: {
       loginTitle: "Log in",
@@ -197,6 +226,9 @@ export const dictionaries = {
     },
     profile: {
       title: "My profile",
+      avatar: "Profile photo",
+      changeAvatar: "Change photo",
+      uploading: "Uploading...",
       subtitle: "A complete profile gets you better partner suggestions.",
       name: "Full name",
       school: "School",
@@ -298,6 +330,20 @@ export const dictionaries = {
       cancel: "Cancel session",
       cancelled: "Cancelled",
       empty: "No sessions yet."
+    },
+    safety: {
+      report: "Report",
+      block: "Block",
+      unblock: "Unblock",
+      reportReason: "Reason for reporting (optional):",
+      reported: "Report sent. Thanks for keeping the community safe!",
+      blockConfirm: "Block this user? You won't see each other or be able to message anymore.",
+      blocked: "User blocked."
+    },
+    footer: {
+      terms: "Terms of Service",
+      privacy: "Privacy Policy",
+      tagline: "Made with 💗 for learners"
     },
     common: {
       loading: "Loading...",

@@ -8,7 +8,19 @@ import PartnerCard from "@/components/PartnerCard";
 
 export default function DashboardPage() {
   const { t } = useI18n();
-  const { loading, me, others, linkStateFor, connect, connectingId } = usePartners();
+  const { loading, me, others, linkStateFor, connect, connectingId, block, report } = usePartners();
+
+  
+  function handleReport(profileId: string) {
+    const reason = window.prompt(t("safety.reportReason")) ?? "";
+    report(profileId, reason).then(() => window.alert(t("safety.reported")));
+  }
+
+  function handleBlock(profileId: string) {
+    if (window.confirm(t("safety.blockConfirm"))) {
+      block(profileId).then(() => window.alert(t("safety.blocked")));
+    }
+  }
 
   if (loading) return <p className="text-slate-500 dark:text-slate-400">{t("common.loading")}</p>;
 
@@ -43,6 +55,8 @@ export default function DashboardPage() {
                 connectionId={connectionId}
                 onConnect={connect}
                 connecting={connectingId === p.id}
+                onReport={handleReport}
+                onBlock={handleBlock}
               />
             );
           })}

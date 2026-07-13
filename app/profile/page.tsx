@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { TIME_SLOTS, type Profile, type StudyMode } from "@/lib/types";
 import CitySelect from "@/components/CitySelect";
+import Avatar from "@/components/Avatar";
 
 export default function ProfilePage() {
   const { t } = useI18n();
@@ -23,6 +24,8 @@ export default function ProfilePage() {
   const [times, setTimes] = useState<string[]>([]);
   const [mode, setMode] = useState<StudyMode>("both");
   const [city, setCity] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -45,6 +48,7 @@ export default function ProfilePage() {
         setTimes(data.available_time ?? []);
         setMode((data.study_mode as StudyMode) ?? "both");
         setCity(data.city ?? "");
+        setAvatarUrl(data.avatar_url ?? null);
       }
       setLoading(false);
     })();
@@ -52,6 +56,32 @@ export default function ProfilePage() {
 
   function toggleTime(slot: string) {
     setTimes((prev) => (prev.includes(slot) ? prev.filter((s) => s !== slot) : [...prev, slot]));
+  }
+
+  async function onAvatarChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file || !userId) return;
+    setUploading(true);
+    setError(null);
+    const ext = file.name.split(".").pop()?.toLowerCase() || "png";
+    const path = `${userId}/avatar-${Date.now()}.${ext}`;
+    const { error: upErr } = await supabase.storage
+      .from("avatars")
+      .upload(path, file, { upsert: true, contentType: file.type });
+    if (upErr) {
+      setError(upErr.message);
+      setUploading(false);
+      return;
+    }
+    const { data } = supabase.storage.from("avatars").getPublicUrl(path);
+    const url = data.publicUrl;
+    const { error: dbErr } = await supabase
+      .from("profiles")
+      .update({ avatar_url: url })
+      .eq("id", userId);
+    if (dbErr) setError(dbErr.message);
+    else setAvatarUrl(url);
+    setUploading(false);
   }
 
   async function onSave(e: React.FormEvent) {
@@ -90,6 +120,17 @@ export default function ProfilePage() {
       <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("profile.subtitle")}</p>
 
       <form onSubmit={onSave} className="card mt-6 space-y-5">
+        <div className="flex items-center gap-4">
+          <Avatar name={name} url={avatarUrl} size={72} />
+          <div>
+            <label className="label">{t("profile.avatar")}</label>
+            <label className="btn-secondary inline-block cursor-pointer !py-1.5">
+              {uploading ? t("profile.uploading") : t("profile.changeAvatar")}
+              <input type="file" accept="image/*" className="hidden" onChange={onAvatarChange} disabled={uploading} />
+            </label>
+          </div>
+        </div>
+
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
             <label className="label">{t("profile.name")}</label>

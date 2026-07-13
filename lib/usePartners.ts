@@ -12,6 +12,7 @@ export function usePartners() {
   const [others, setOthers] = useState<Profile[]>([]);
   const [connections, setConnections] = useState<Connection[]>([]);
   const [connectingId, setConnectingId] = useState<string | null>(null);
+  const [blockedIds, setBlockedIds] = useState<Set<string>>(new Set());
 
   const load = useCallback(async () => {
     const {
@@ -21,16 +22,26 @@ export function usePartners() {
       setLoading(false);
       return;
     }
-    const [{ data: myProfile }, { data: profiles }, { data: conns }] = await Promise.all([
-      supabase.from("profiles").select("*").eq("id", user.id).maybeSingle<Profile>(),
-      supabase.from("profiles").select("*").neq("id", user.id).limit(200),
-      supabase
-        .from("connections")
-        .select("*")
-        .or(`requester_id.eq.${user.id},receiver_id.eq.${user.id}`),
-    ]);
+    const [{ data: myProfile }, { data: profiles }, { data: conns }, { data: blocks }] =
+      await Promise.all([
+        supabase.from("profiles").select("*").eq("id", user.id).maybeSingle<Profile>(),
+        supabase.from("profiles").select("*").neq("id", user.id).limit(200),
+        supabase
+          .from("connections")
+          .select("*")
+          .or(`requester_id.eq.${user.id},receiver_id.eq.${user.id}`),
+        supabase
+          .from("blocks")
+          .select("blocker_id, blocked_id")
+          .or(`blocker_id.eq.${user.id},blocked_id.eq.${user.id}`),
+      ]);
+    const blocked = new Set<string>();
+    (blocks ?? []).forEach((b: { blocker_id: string; blocked_id: string }) => {
+      blocked.add(b.blocker_id === user.id ? b.blocked_id : b.blocker_id);
+    });
+    setBlockedIds(blocked);
     setMe(myProfile ?? null);
-    setOthers((profiles as Profile[]) ?? []);
+    setOthers(((profiles as Profile[]) ?? []).filter((p) => !blocked.has(p.id)));
     setConnections((conns as Connection[]) ?? []);
     setLoading(false);
   }, [supabase]);
@@ -69,5 +80,34 @@ export function usePartners() {
     [me, supabase, load]
   );
 
-  return { loading, me, others, connections, linkStateFor, connect, connectingId, reload: load };
+  const block = useCallback(
+    async (profileId: string) => {
+      if (!me) return;
+      await supabase.from("blocks").insert({ blocker_id: me.id, blocked_id: profileId });
+      await load();
+    },
+    [me, supabase, load]
+  );
+
+  const report = useCallback(
+    async (profileId: string, reason: string) => {
+      if (!me) return;
+      await supabase.from("reports").insert({ reporter_id: me.id, reported_id: profileId, reason });
+    },
+    [me, supabase]
+  );
+
+  return {
+    loading,
+    me,
+    others,
+    connections,
+    blockedIds,
+    linkStateFor,
+    connect,
+    connectingId,
+    block,
+    report,
+    reload: load,
+  };
 }

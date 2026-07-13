@@ -37,6 +37,33 @@ export default function LandingPage() {
           </div>
         ))}
       </section>
+
+      <section className="mx-auto mt-16 max-w-4xl">
+        <h2 className="text-center text-2xl font-bold text-slate-900 dark:text-slate-100">
+          {t("landing.howTitle")}
+        </h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          {[t("landing.how1"), t("landing.how2"), t("landing.how3")].map((step, i) => (
+            <div key={i} className="card text-center">
+              <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-400 to-accent-500 text-lg font-bold text-white shadow-cute">
+                {i + 1}
+              </span>
+              <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{step}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto mt-16 flex max-w-3xl flex-wrap justify-center gap-3">
+        <span className="badge !px-4 !py-2 !text-sm">💗 {t("landing.freeNote")}</span>
+        <span className="badge !px-4 !py-2 !text-sm">🛡️ {t("landing.safeNote")}</span>
+      </section>
+
+      <section className="mx-auto mt-16 max-w-3xl text-center">
+        <Link href="/register" className="btn-primary !px-8 !py-3 !text-base">
+          {t("landing.ctaStart")} ✨
+        </Link>
+      </section>
     </div>
   );
 }

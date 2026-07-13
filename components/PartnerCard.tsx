@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import type { LinkState, Profile } from "@/lib/types";
+import Avatar from "./Avatar";
 
 interface Props {
   profile: Profile;
@@ -10,16 +12,21 @@ interface Props {
   connectionId?: string;
   onConnect: (profileId: string) => void;
   connecting?: boolean;
+  onReport?: (profileId: string) => void;
+  onBlock?: (profileId: string) => void;
 }
 
-export default function PartnerCard({ profile, linkState, connectionId, onConnect, connecting }: Props) {
+export default function PartnerCard({
+  profile,
+  linkState,
+  connectionId,
+  onConnect,
+  connecting,
+  onReport,
+  onBlock,
+}: Props) {
   const { t } = useI18n();
-  const initials = (profile.name || "?")
-    .split(" ")
-    .map((w) => w[0])
-    .slice(-2)
-    .join("")
-    .toUpperCase();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const modeLabel =
     profile.study_mode === "online"
@@ -31,17 +38,49 @@ export default function PartnerCard({ profile, linkState, connectionId, onConnec
           : null;
 
   return (
-    <div className="card flex flex-col">
+    <div className="card relative flex flex-col">
       <div className="flex items-center gap-3">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/50 text-base font-bold text-brand-700 dark:text-brand-200">
-          {initials}
-        </div>
+        <Avatar name={profile.name} url={profile.avatar_url} size={48} />
         <div className="min-w-0">
           <h3 className="truncate font-semibold text-slate-900 dark:text-slate-100">{profile.name}</h3>
           <p className="truncate text-sm text-slate-500 dark:text-slate-400">
             {[profile.major, profile.school].filter(Boolean).join(" · ")}
           </p>
         </div>
+        {(onReport || onBlock) && (
+          <div className="relative ml-auto self-start">
+            <button
+              type="button"
+              aria-label="menu"
+              onClick={() => setMenuOpen((v) => !v)}
+              className="rounded-full px-2 py-0.5 text-lg leading-none text-slate-400 transition hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-slate-800"
+            >
+              ⋯
+            </button>
+            {menuOpen && (
+              <div className="absolute right-0 z-10 mt-1 w-36 overflow-hidden rounded-2xl border-2 border-brand-100 bg-white text-sm shadow-cute-lg dark:border-slate-700 dark:bg-slate-900">
+                {onReport && (
+                  <button
+                    type="button"
+                    onClick={() => { setMenuOpen(false); onReport(profile.id); }}
+                    className="block w-full px-3 py-2 text-left text-slate-700 hover:bg-brand-50 dark:text-slate-200 dark:hover:bg-slate-800"
+                  >
+                    🚩 {t("safety.report")}
+                  </button>
+                )}
+                {onBlock && (
+                  <button
+                    type="button"
+                    onClick={() => { setMenuOpen(false); onBlock(profile.id); }}
+                    className="block w-full px-3 py-2 text-left text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/30"
+                  >
+                    🚫 {t("safety.block")}
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5">

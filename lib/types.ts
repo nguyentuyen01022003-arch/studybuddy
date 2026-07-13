@@ -14,6 +14,7 @@ export interface Profile {
   available_time: string[] | null;
   study_mode: StudyMode | null;
   city: string | null;
+  avatar_url?: string | null;
   created_at?: string;
 }
 
@@ -34,6 +35,7 @@ export interface Message {
   connection_id: string;
   sender_id: string;
   content: string;
+  read?: boolean;
   created_at: string;
 }
 

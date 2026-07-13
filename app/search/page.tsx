@@ -10,7 +10,7 @@ import CitySelect from "@/components/CitySelect";
 
 export default function SearchPage() {
   const { t } = useI18n();
-  const { loading, others, linkStateFor, connect, connectingId } = usePartners();
+  const { loading, others, linkStateFor, connect, connectingId, block, report } = usePartners();
   const [filters, setFilters] = useState<PartnerFilters>({
     subject: "",
     major: "",
@@ -23,6 +23,18 @@ export default function SearchPage() {
     setFilters((f) => ({ ...f, [k]: e.target.value }));
 
   const results = others.filter((p) => matchesFilters(p, filters));
+
+
+  function handleReport(profileId: string) {
+    const reason = window.prompt(t("safety.reportReason")) ?? "";
+    report(profileId, reason).then(() => window.alert(t("safety.reported")));
+  }
+
+  function handleBlock(profileId: string) {
+    if (window.confirm(t("safety.blockConfirm"))) {
+      block(profileId).then(() => window.alert(t("safety.blocked")));
+    }
+  }
 
   return (
     <div>
@@ -82,6 +94,8 @@ export default function SearchPage() {
                     connectionId={connectionId}
                     onConnect={connect}
                     connecting={connectingId === p.id}
+                    onReport={handleReport}
+                    onBlock={handleBlock}
                   />
                 );
               })}

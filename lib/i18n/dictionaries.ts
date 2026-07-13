@@ -39,7 +39,9 @@ export const dictionaries = {
       registerHere: "Đăng ký ngay",
       loginHere: "Đăng nhập",
       checkEmail: "Đăng ký thành công! Hãy kiểm tra email để xác nhận tài khoản, sau đó đăng nhập.",
-      passwordHint: "Ít nhất 6 ký tự"
+      passwordHint: "Ít nhất 6 ký tự",
+      orWith: "hoặc",
+      google: "Tiếp tục với Google"
     },
     profile: {
       title: "Hồ sơ của tôi",
@@ -189,7 +191,9 @@ export const dictionaries = {
       registerHere: "Sign up",
       loginHere: "Log in",
       checkEmail: "Success! Check your email to confirm your account, then log in.",
-      passwordHint: "At least 6 characters"
+      passwordHint: "At least 6 characters",
+      orWith: "or",
+      google: "Continue with Google"
     },
     profile: {
       title: "My profile",

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useI18n } from "@/lib/i18n/LanguageContext";
+import GoogleSignIn from "@/components/GoogleSignIn";
 
 export default function RegisterPage() {
   const { t } = useI18n();
@@ -85,6 +86,7 @@ export default function RegisterPage() {
             {loading ? t("common.loading") : t("auth.registerBtn")}
           </button>
         </form>
+        <GoogleSignIn />
         <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-300">
           {t("auth.haveAccount")}{" "}
           <Link href="/login" className="font-semibold text-brand-600 hover:underline">

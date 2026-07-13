@@ -37,7 +37,7 @@ export default function SessionsPage() {
     await load();
   }
 
-  if (loading) return <p className="text-slate-500">{t("common.loading")}</p>;
+  if (loading) return <p className="text-slate-500 dark:text-slate-400">{t("common.loading")}</p>;
 
   const partnerOf = (s: StudySession): Profile | undefined => {
     const c = s.connection;
@@ -68,16 +68,16 @@ export default function SessionsPage() {
       <div className={`card ${isPast ? "opacity-60" : ""}`}>
         <div className="flex flex-wrap items-start justify-between gap-2">
           <div>
-            <h3 className="font-semibold text-slate-900">
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100">
               {s.title}
               {s.status === "cancelled" && (
-                <span className="ml-2 rounded-full bg-red-50 px-2 py-0.5 text-xs font-medium text-red-600">
+                <span className="ml-2 rounded-full bg-red-50 dark:bg-red-900/40 px-2 py-0.5 text-xs font-medium text-red-600 dark:text-red-400">
                   {t("sessions.cancelled")}
                 </span>
               )}
             </h3>
-            <p className="text-sm text-slate-500">
-              {t("sessions.with")} <span className="font-medium text-slate-700">{p?.name ?? "—"}</span>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              {t("sessions.with")} <span className="font-medium text-slate-700 dark:text-slate-200">{p?.name ?? "—"}</span>
             </p>
           </div>
           {!isPast && s.status === "scheduled" && (
@@ -86,26 +86,26 @@ export default function SessionsPage() {
             </button>
           )}
         </div>
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600">
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600 dark:text-slate-300">
           <span>🗓 {fmt(s.scheduled_at)}</span>
           <span>⏱ {s.duration_minutes}′</span>
           <span>{s.mode === "online" ? "💻" : "📍"} {t(`profile.${s.mode}`)}</span>
           {s.subject && <span className="badge">{s.subject}</span>}
         </div>
-        {s.location && <p className="mt-2 text-sm text-slate-600">📌 {s.location}</p>}
-        {s.notes && <p className="mt-1 text-sm text-slate-500">{s.notes}</p>}
+        {s.location && <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">📌 {s.location}</p>}
+        {s.notes && <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{s.notes}</p>}
       </div>
     );
   };
 
   return (
     <div className="mx-auto max-w-3xl space-y-10">
-      <h1 className="text-2xl font-bold text-slate-900">{t("sessions.title")}</h1>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("sessions.title")}</h1>
 
       <section>
         <h2 className="mb-3 font-semibold text-slate-800">⏳ {t("sessions.upcoming")}</h2>
         {upcoming.length === 0 ? (
-          <p className="text-sm text-slate-500">{t("sessions.empty")}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("sessions.empty")}</p>
         ) : (
           <div className="space-y-4">
             {upcoming.map((s) => (

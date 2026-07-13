@@ -32,7 +32,7 @@ export default function LoginPage() {
   return (
     <div className="mx-auto max-w-md">
       <div className="card">
-        <h1 className="text-2xl font-bold text-slate-900">{t("auth.loginTitle")}</h1>
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("auth.loginTitle")}</h1>
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
           <div>
             <label className="label">{t("auth.email")}</label>
@@ -54,12 +54,12 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
           <button type="submit" disabled={loading} className="btn-primary w-full">
             {loading ? t("common.loading") : t("auth.loginBtn")}
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-slate-600">
+        <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-300">
           {t("auth.noAccount")}{" "}
           <Link href="/register" className="font-semibold text-brand-600 hover:underline">
             {t("auth.registerHere")}

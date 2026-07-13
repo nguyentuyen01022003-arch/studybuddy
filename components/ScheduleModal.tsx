@@ -52,8 +52,8 @@ export default function ScheduleModal({ connectionId, creatorId, onClose, onCrea
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={onClose}>
       <div className="card w-full max-w-md" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-slate-900">{t("sessions.newTitle")}</h2>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-600">✕</button>
+          <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">{t("sessions.newTitle")}</h2>
+          <button onClick={onClose} className="text-slate-400 dark:text-slate-500 hover:text-slate-600">✕</button>
         </div>
         <form onSubmit={onSubmit} className="mt-4 space-y-4">
           <div>
@@ -98,7 +98,7 @@ export default function ScheduleModal({ connectionId, creatorId, onClose, onCrea
                   className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
                     mode === m
                       ? "border-brand-600 bg-brand-600 text-white"
-                      : "border-slate-300 bg-white text-slate-600"
+                      : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300"
                   }`}
                 >
                   {t(`profile.${m}`)}
@@ -114,7 +114,7 @@ export default function ScheduleModal({ connectionId, creatorId, onClose, onCrea
             <label className="label">{t("sessions.notes")}</label>
             <textarea className="input min-h-[60px]" value={notes} onChange={(e) => setNotes(e.target.value)} />
           </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
           <button type="submit" disabled={saving} className="btn-primary w-full">
             {saving ? t("common.loading") : t("sessions.create")}
           </button>

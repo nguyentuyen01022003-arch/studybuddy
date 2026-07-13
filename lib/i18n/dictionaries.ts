@@ -60,6 +60,15 @@ export const dictionaries = {
       save: "Lưu hồ sơ",
       saved: "Đã lưu hồ sơ!"
     },
+    location: {
+      country: "Quốc gia",
+      vn: "Việt Nam",
+      us: "Hoa Kỳ",
+      selectCity: "Chọn thành phố",
+      searchCity: "Tìm thành phố...",
+      noResult: "Không tìm thấy thành phố",
+      any: "Tất cả"
+    },
     time: {
       morning: "Buổi sáng",
       afternoon: "Buổi chiều",
@@ -196,6 +205,15 @@ export const dictionaries = {
       city: "City",
       save: "Save profile",
       saved: "Profile saved!"
+    },
+    location: {
+      country: "Country",
+      vn: "Vietnam",
+      us: "United States",
+      selectCity: "Select a city",
+      searchCity: "Search city...",
+      noResult: "No city found",
+      any: "Any"
     },
     time: {
       morning: "Morning",

@@ -44,7 +44,7 @@ export default function ConnectionsPage() {
     await load();
   }
 
-  if (loading) return <p className="text-slate-500">{t("common.loading")}</p>;
+  if (loading) return <p className="text-slate-500 dark:text-slate-400">{t("common.loading")}</p>;
 
   const partnerOf = (c: Connection): Profile | undefined =>
     c.requester_id === myId ? c.receiver : c.requester;
@@ -56,10 +56,10 @@ export default function ConnectionsPage() {
   const Row = ({ c, children }: { c: Connection; children: React.ReactNode }) => {
     const p = partnerOf(c);
     return (
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
         <div>
-          <p className="font-semibold text-slate-900">{p?.name ?? "—"}</p>
-          <p className="text-sm text-slate-500">
+          <p className="font-semibold text-slate-900 dark:text-slate-100">{p?.name ?? "—"}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             {[p?.major, p?.school, p?.city].filter(Boolean).join(" · ")}
           </p>
         </div>
@@ -70,14 +70,14 @@ export default function ConnectionsPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-10">
-      <h1 className="text-2xl font-bold text-slate-900">{t("connections.title")}</h1>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("connections.title")}</h1>
 
       <section>
         <h2 className="mb-3 font-semibold text-slate-800">
           📥 {t("connections.incoming")} {incoming.length > 0 && <span className="badge">{incoming.length}</span>}
         </h2>
         {incoming.length === 0 ? (
-          <p className="text-sm text-slate-500">{t("connections.emptyIncoming")}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("connections.emptyIncoming")}</p>
         ) : (
           <div className="space-y-3">
             {incoming.map((c) => (
@@ -97,7 +97,7 @@ export default function ConnectionsPage() {
       <section>
         <h2 className="mb-3 font-semibold text-slate-800">📤 {t("connections.outgoing")}</h2>
         {outgoing.length === 0 ? (
-          <p className="text-sm text-slate-500">{t("connections.emptyOutgoing")}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("connections.emptyOutgoing")}</p>
         ) : (
           <div className="space-y-3">
             {outgoing.map((c) => (
@@ -114,7 +114,7 @@ export default function ConnectionsPage() {
       <section>
         <h2 className="mb-3 font-semibold text-slate-800">🤝 {t("connections.accepted")}</h2>
         {accepted.length === 0 ? (
-          <p className="text-sm text-slate-500">{t("connections.emptyAccepted")}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("connections.emptyAccepted")}</p>
         ) : (
           <div className="space-y-3">
             {accepted.map((c) => (

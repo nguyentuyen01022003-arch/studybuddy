@@ -14,10 +14,10 @@ export default function LandingPage() {
   return (
     <div className="py-8">
       <section className="mx-auto max-w-3xl text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl">
           {t("landing.heroTitle")}
         </h1>
-        <p className="mt-4 text-lg text-slate-600">{t("landing.heroSubtitle")}</p>
+        <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">{t("landing.heroSubtitle")}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/register" className="btn-primary !px-6 !py-3 !text-base">
             {t("landing.ctaStart")}
@@ -32,8 +32,8 @@ export default function LandingPage() {
         {features.map((f) => (
           <div key={f.title} className="card text-center">
             <div className="text-3xl">{f.icon}</div>
-            <h3 className="mt-3 font-semibold text-slate-900">{f.title}</h3>
-            <p className="mt-1 text-sm text-slate-600">{f.desc}</p>
+            <h3 className="mt-3 font-semibold text-slate-900 dark:text-slate-100">{f.title}</h3>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{f.desc}</p>
           </div>
         ))}
       </section>

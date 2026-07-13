@@ -33,12 +33,12 @@ export default function PartnerCard({ profile, linkState, connectionId, onConnec
   return (
     <div className="card flex flex-col">
       <div className="flex items-center gap-3">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-100 text-base font-bold text-brand-700">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/50 text-base font-bold text-brand-700 dark:text-brand-200">
           {initials}
         </div>
         <div className="min-w-0">
-          <h3 className="truncate font-semibold text-slate-900">{profile.name}</h3>
-          <p className="truncate text-sm text-slate-500">
+          <h3 className="truncate font-semibold text-slate-900 dark:text-slate-100">{profile.name}</h3>
+          <p className="truncate text-sm text-slate-500 dark:text-slate-400">
             {[profile.major, profile.school].filter(Boolean).join(" · ")}
           </p>
         </div>
@@ -49,25 +49,25 @@ export default function PartnerCard({ profile, linkState, connectionId, onConnec
           <span key={s} className="badge">{s}</span>
         ))}
         {modeLabel && (
-          <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
+          <span className="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-900/40 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-300">
             {modeLabel}
           </span>
         )}
         {profile.city && (
-          <span className="inline-flex items-center rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700">
+          <span className="inline-flex items-center rounded-full bg-amber-50 dark:bg-amber-900/40 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300">
             📍 {profile.city}
           </span>
         )}
       </div>
 
       {(profile.available_time ?? []).length > 0 && (
-        <p className="mt-2 text-xs text-slate-500">
+        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
           🕐 {(profile.available_time ?? []).map((s) => t(`time.${s}`)).join(", ")}
         </p>
       )}
 
       {profile.study_goals && (
-        <p className="mt-2 line-clamp-2 text-sm text-slate-600">
+        <p className="mt-2 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">
           <span className="font-medium">{t("card.goals")}:</span> {profile.study_goals}
         </p>
       )}

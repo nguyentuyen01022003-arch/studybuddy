@@ -45,7 +45,7 @@ export default function RegisterPage() {
   return (
     <div className="mx-auto max-w-md">
       <div className="card">
-        <h1 className="text-2xl font-bold text-slate-900">{t("auth.registerTitle")}</h1>
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("auth.registerTitle")}</h1>
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
           <div>
             <label className="label">{t("auth.name")}</label>
@@ -77,15 +77,15 @@ export default function RegisterPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <p className="mt-1 text-xs text-slate-500">{t("auth.passwordHint")}</p>
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t("auth.passwordHint")}</p>
           </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          {info && <p className="rounded-lg bg-green-50 p-3 text-sm text-green-700">{info}</p>}
+          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
+          {info && <p className="rounded-lg bg-green-50 dark:bg-green-900/40 p-3 text-sm text-green-700 dark:text-green-300">{info}</p>}
           <button type="submit" disabled={loading} className="btn-primary w-full">
             {loading ? t("common.loading") : t("auth.registerBtn")}
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-slate-600">
+        <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-300">
           {t("auth.haveAccount")}{" "}
           <Link href="/login" className="font-semibold text-brand-600 hover:underline">
             {t("auth.loginHere")}

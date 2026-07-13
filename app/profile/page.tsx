@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { TIME_SLOTS, type Profile, type StudyMode } from "@/lib/types";
+import CitySelect from "@/components/CitySelect";
 
 export default function ProfilePage() {
   const { t } = useI18n();
@@ -81,12 +82,12 @@ export default function ProfilePage() {
     }
   }
 
-  if (loading) return <p className="text-slate-500">{t("common.loading")}</p>;
+  if (loading) return <p className="text-slate-500 dark:text-slate-400">{t("common.loading")}</p>;
 
   return (
     <div className="mx-auto max-w-2xl">
-      <h1 className="text-2xl font-bold text-slate-900">{t("profile.title")}</h1>
-      <p className="mt-1 text-sm text-slate-600">{t("profile.subtitle")}</p>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("profile.title")}</h1>
+      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("profile.subtitle")}</p>
 
       <form onSubmit={onSave} className="card mt-6 space-y-5">
         <div className="grid gap-5 sm:grid-cols-2">
@@ -102,16 +103,14 @@ export default function ProfilePage() {
             <label className="label">{t("profile.major")}</label>
             <input className="input" value={major} onChange={(e) => setMajor(e.target.value)} />
           </div>
-          <div>
-            <label className="label">{t("profile.city")}</label>
-            <input className="input" value={city} onChange={(e) => setCity(e.target.value)} />
-          </div>
         </div>
+
+        <CitySelect city={city} onCityChange={setCity} />
 
         <div>
           <label className="label">{t("profile.subjects")}</label>
           <input className="input" value={subjects} onChange={(e) => setSubjects(e.target.value)} />
-          <p className="mt-1 text-xs text-slate-500">{t("profile.subjectsHint")}</p>
+          <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t("profile.subjectsHint")}</p>
         </div>
 
         <div>
@@ -135,7 +134,7 @@ export default function ProfilePage() {
                 className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
                   times.includes(slot)
                     ? "border-brand-600 bg-brand-600 text-white"
-                    : "border-slate-300 bg-white text-slate-600 hover:border-brand-400"
+                    : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:border-brand-400"
                 }`}
               >
                 {t(`time.${slot}`)}
@@ -155,7 +154,7 @@ export default function ProfilePage() {
                 className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
                   mode === m
                     ? "border-brand-600 bg-brand-600 text-white"
-                    : "border-slate-300 bg-white text-slate-600 hover:border-brand-400"
+                    : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:border-brand-400"
                 }`}
               >
                 {t(`profile.${m}`)}
@@ -164,8 +163,8 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
-        {saved && <p className="rounded-lg bg-green-50 p-3 text-sm text-green-700">{t("profile.saved")}</p>}
+        {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
+        {saved && <p className="rounded-lg bg-green-50 dark:bg-green-900/40 p-3 text-sm text-green-700 dark:text-green-300">{t("profile.saved")}</p>}
 
         <button type="submit" disabled={saving} className="btn-primary">
           {saving ? t("common.loading") : t("profile.save")}

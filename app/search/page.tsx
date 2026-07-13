@@ -6,6 +6,7 @@ import { matchesFilters, type PartnerFilters } from "@/lib/matching";
 import { usePartners } from "@/lib/usePartners";
 import { TIME_SLOTS } from "@/lib/types";
 import PartnerCard from "@/components/PartnerCard";
+import CitySelect from "@/components/CitySelect";
 
 export default function SearchPage() {
   const { t } = useI18n();
@@ -25,9 +26,9 @@ export default function SearchPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-slate-900">{t("search.title")}</h1>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("search.title")}</h1>
 
-      <div className="card mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="card mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
         <div>
           <label className="label">{t("search.subject")}</label>
           <input className="input" value={filters.subject} onChange={set("subject")} />
@@ -36,9 +37,8 @@ export default function SearchPage() {
           <label className="label">{t("search.major")}</label>
           <input className="input" value={filters.major} onChange={set("major")} />
         </div>
-        <div>
-          <label className="label">{t("search.city")}</label>
-          <input className="input" value={filters.city} onChange={set("city")} />
+        <div className="sm:col-span-2">
+          <CitySelect city={filters.city ?? ""} onCityChange={(c) => setFilters((f) => ({ ...f, city: c }))} allowAny />
         </div>
         <div>
           <label className="label">{t("search.mode")}</label>
@@ -62,14 +62,14 @@ export default function SearchPage() {
       </div>
 
       {loading ? (
-        <p className="mt-8 text-slate-500">{t("common.loading")}</p>
+        <p className="mt-8 text-slate-500 dark:text-slate-400">{t("common.loading")}</p>
       ) : (
         <>
-          <p className="mt-6 text-sm text-slate-500">
+          <p className="mt-6 text-sm text-slate-500 dark:text-slate-400">
             {results.length} {t("search.results")}
           </p>
           {results.length === 0 ? (
-            <p className="mt-6 text-center text-slate-500">{t("search.noResults")}</p>
+            <p className="mt-6 text-center text-slate-500 dark:text-slate-400">{t("search.noResults")}</p>
           ) : (
             <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {results.map((p) => {

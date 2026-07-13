@@ -73,7 +73,7 @@ export default function ConnectionsPage() {
       <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("connections.title")}</h1>
 
       <section>
-        <h2 className="mb-3 font-semibold text-slate-800">
+        <h2 className="mb-3 font-semibold text-slate-800 dark:text-slate-200">
           📥 {t("connections.incoming")} {incoming.length > 0 && <span className="badge">{incoming.length}</span>}
         </h2>
         {incoming.length === 0 ? (
@@ -95,7 +95,7 @@ export default function ConnectionsPage() {
       </section>
 
       <section>
-        <h2 className="mb-3 font-semibold text-slate-800">📤 {t("connections.outgoing")}</h2>
+        <h2 className="mb-3 font-semibold text-slate-800 dark:text-slate-200">📤 {t("connections.outgoing")}</h2>
         {outgoing.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-slate-400">{t("connections.emptyOutgoing")}</p>
         ) : (
@@ -112,7 +112,7 @@ export default function ConnectionsPage() {
       </section>
 
       <section>
-        <h2 className="mb-3 font-semibold text-slate-800">🤝 {t("connections.accepted")}</h2>
+        <h2 className="mb-3 font-semibold text-slate-800 dark:text-slate-200">🤝 {t("connections.accepted")}</h2>
         {accepted.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-slate-400">{t("connections.emptyAccepted")}</p>
         ) : (

@@ -106,35 +106,40 @@ export default function ChatRoomPage() {
 
   return (
     <div className="mx-auto flex h-[calc(100vh-10rem)] max-w-2xl flex-col">
-      <div className="flex items-center justify-between rounded-t-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3">
-        <div>
-          <p className="font-semibold text-slate-900 dark:text-slate-100">{partner?.name}</p>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            {[partner?.major, partner?.city].filter(Boolean).join(" · ")}
-          </p>
+      <div className="flex items-center justify-between rounded-t-3xl border-2 border-brand-100 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-900">
+        <div className="flex items-center gap-3">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-400 to-accent-500 text-sm font-bold text-white shadow-cute">
+            {(partner?.name || "?").charAt(0).toUpperCase()}
+          </span>
+          <div>
+            <p className="font-semibold text-slate-900 dark:text-slate-100">{partner?.name}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              {[partner?.major, partner?.city].filter(Boolean).join(" · ")}
+            </p>
+          </div>
         </div>
         <button onClick={() => setShowSchedule(true)} className="btn-secondary !py-1.5">
           📅 {t("chat.schedule")}
         </button>
       </div>
 
-      <div className="flex-1 space-y-2 overflow-y-auto border-x border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
+      <div className="flex-1 space-y-2 overflow-y-auto border-x-2 border-brand-100 bg-brand-50/40 p-4 dark:border-slate-700 dark:bg-slate-800">
         {messages.length === 0 && (
-          <p className="pt-8 text-center text-sm text-slate-400 dark:text-slate-500">{t("chat.noMessages")}</p>
+          <p className="pt-8 text-center text-sm text-slate-400 dark:text-slate-400">💌 {t("chat.noMessages")}</p>
         )}
         {messages.map((m) => (
           <div key={m.id} className={`flex ${m.sender_id === myId ? "justify-end" : "justify-start"}`}>
             <div
               className={`max-w-[75%] rounded-2xl px-4 py-2 text-sm ${
                 m.sender_id === myId
-                  ? "rounded-br-md bg-brand-600 text-white"
-                  : "rounded-bl-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800"
+                  ? "rounded-br-md bg-gradient-to-r from-brand-500 to-accent-500 text-white shadow-cute"
+                  : "rounded-bl-md border-2 border-brand-100 bg-white text-slate-800 shadow-cute dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
               }`}
             >
               <p className="whitespace-pre-wrap break-words">{m.content}</p>
               <p
                 className={`mt-1 text-[10px] ${
-                  m.sender_id === myId ? "text-brand-100" : "text-slate-400 dark:text-slate-500"
+                  m.sender_id === myId ? "text-brand-100" : "text-slate-400 dark:text-slate-300/80"
                 }`}
               >
                 {new Date(m.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
@@ -147,7 +152,7 @@ export default function ChatRoomPage() {
 
       <form
         onSubmit={send}
-        className="flex gap-2 rounded-b-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-3"
+        className="flex gap-2 rounded-b-3xl border-2 border-brand-100 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"
       >
         <input
           className="input flex-1"

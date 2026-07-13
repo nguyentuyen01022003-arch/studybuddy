@@ -103,7 +103,7 @@ export default function SessionsPage() {
       <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("sessions.title")}</h1>
 
       <section>
-        <h2 className="mb-3 font-semibold text-slate-800">⏳ {t("sessions.upcoming")}</h2>
+        <h2 className="mb-3 font-semibold text-slate-800 dark:text-slate-200">⏳ {t("sessions.upcoming")}</h2>
         {upcoming.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-slate-400">{t("sessions.empty")}</p>
         ) : (
@@ -117,7 +117,7 @@ export default function SessionsPage() {
 
       {past.length > 0 && (
         <section>
-          <h2 className="mb-3 font-semibold text-slate-800">✔️ {t("sessions.past")}</h2>
+          <h2 className="mb-3 font-semibold text-slate-800 dark:text-slate-200">✔️ {t("sessions.past")}</h2>
           <div className="space-y-4">
             {past.map((s) => (
               <SessionCard key={s.id} s={s} isPast />

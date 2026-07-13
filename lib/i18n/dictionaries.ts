@@ -62,11 +62,15 @@ export const dictionaries = {
     },
     location: {
       country: "Quốc gia",
-      vn: "Việt Nam",
-      us: "Hoa Kỳ",
+      selectCountry: "Chọn quốc gia",
+      searchCountry: "Tìm quốc gia...",
+      state: "Bang",
+      selectState: "Chọn bang",
+      searchState: "Tìm bang...",
+      selectStateFirst: "Chọn bang trước",
       selectCity: "Chọn thành phố",
       searchCity: "Tìm thành phố...",
-      noResult: "Không tìm thấy thành phố",
+      noResult: "Không tìm thấy kết quả",
       any: "Tất cả"
     },
     time: {
@@ -208,11 +212,15 @@ export const dictionaries = {
     },
     location: {
       country: "Country",
-      vn: "Vietnam",
-      us: "United States",
+      selectCountry: "Select a country",
+      searchCountry: "Search country...",
+      state: "State",
+      selectState: "Select a state",
+      searchState: "Search state...",
+      selectStateFirst: "Select a state first",
       selectCity: "Select a city",
       searchCity: "Search city...",
-      noResult: "No city found",
+      noResult: "No results found",
       any: "Any"
     },
     time: {

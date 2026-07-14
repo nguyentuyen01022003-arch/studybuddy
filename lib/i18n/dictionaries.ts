@@ -138,7 +138,16 @@ export const dictionaries = {
       placeholder: "Nhập tin nhắn...",
       send: "Gửi",
       schedule: "Đặt lịch học",
-      noMessages: "Hãy gửi lời chào đầu tiên!"
+      noMessages: "Hãy gửi lời chào đầu tiên!",
+      typing: "đang nhập...",
+      seen: "Đã xem",
+      unsend: "Thu hồi",
+      unsent: "Tin nhắn đã được thu hồi",
+      reply: "Trả lời",
+      replyingTo: "Đang trả lời",
+      photo: "Ảnh",
+      sendImage: "Gửi ảnh",
+      you: "Bạn"
     },
     sessions: {
       title: "Lịch học",
@@ -331,7 +340,16 @@ export const dictionaries = {
       placeholder: "Type a message...",
       send: "Send",
       schedule: "Schedule session",
-      noMessages: "Say hi first!"
+      noMessages: "Say hi first!",
+      typing: "typing...",
+      seen: "Seen",
+      unsend: "Unsend",
+      unsent: "Message unsent",
+      reply: "Reply",
+      replyingTo: "Replying to",
+      photo: "Photo",
+      sendImage: "Send a photo",
+      you: "You"
     },
     sessions: {
       title: "Study sessions",

@@ -37,6 +37,17 @@ export interface Message {
   sender_id: string;
   content: string;
   read?: boolean;
+  reply_to?: string | null;
+  image_url?: string | null;
+  deleted?: boolean;
+  created_at: string;
+}
+
+export interface MessageReaction {
+  id: string;
+  message_id: string;
+  user_id: string;
+  emoji: string;
   created_at: string;
 }
 

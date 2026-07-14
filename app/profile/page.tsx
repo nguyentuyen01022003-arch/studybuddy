@@ -6,6 +6,7 @@ import { useI18n } from "@/lib/i18n/LanguageContext";
 import { TIME_SLOTS, type Profile, type StudyMode } from "@/lib/types";
 import CitySelect from "@/components/CitySelect";
 import Avatar from "@/components/Avatar";
+import AvatarPicker from "@/components/AvatarPicker";
 
 export default function ProfilePage() {
   const { t } = useI18n();
@@ -24,8 +25,11 @@ export default function ProfilePage() {
   const [times, setTimes] = useState<string[]>([]);
   const [mode, setMode] = useState<StudyMode>("both");
   const [city, setCity] = useState("");
+  const [gender, setGender] = useState("");
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [showPicker, setShowPicker] = useState(false);
+  const [picking, setPicking] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -48,6 +52,7 @@ export default function ProfilePage() {
         setTimes(data.available_time ?? []);
         setMode((data.study_mode as StudyMode) ?? "both");
         setCity(data.city ?? "");
+        setGender(data.gender ?? "");
         setAvatarUrl(data.avatar_url ?? null);
       }
       setLoading(false);
@@ -84,6 +89,19 @@ export default function ProfilePage() {
     setUploading(false);
   }
 
+  async function pickPreset(url: string) {
+    if (!userId) return;
+    setPicking(true);
+    setError(null);
+    const { error: dbErr } = await supabase
+      .from("profiles")
+      .update({ avatar_url: url })
+      .eq("id", userId);
+    if (dbErr) setError(dbErr.message);
+    else setAvatarUrl(url);
+    setPicking(false);
+  }
+
   async function onSave(e: React.FormEvent) {
     e.preventDefault();
     if (!userId) return;
@@ -103,6 +121,7 @@ export default function ProfilePage() {
       available_time: times,
       study_mode: mode,
       city: city || null,
+      gender: gender || null,
     });
     setSaving(false);
     if (error) setError(error.message);
@@ -124,12 +143,22 @@ export default function ProfilePage() {
           <Avatar name={name} url={avatarUrl} size={72} />
           <div>
             <label className="label">{t("profile.avatar")}</label>
-            <label className="btn-secondary inline-block cursor-pointer !py-1.5">
-              {uploading ? t("profile.uploading") : t("profile.changeAvatar")}
-              <input type="file" accept="image/*" className="hidden" onChange={onAvatarChange} disabled={uploading} />
-            </label>
+            <div className="flex flex-wrap gap-2">
+              <label className="btn-secondary inline-block cursor-pointer !py-1.5">
+                {uploading ? t("profile.uploading") : t("profile.changeAvatar")}
+                <input type="file" accept="image/*" className="hidden" onChange={onAvatarChange} disabled={uploading} />
+              </label>
+              <button
+                type="button"
+                className="btn-secondary !py-1.5"
+                onClick={() => setShowPicker((v) => !v)}
+              >
+                🎨 {showPicker ? t("profile.hidePicker") : t("profile.pickAvatar")}
+              </button>
+            </div>
           </div>
         </div>
+        {showPicker && <AvatarPicker current={avatarUrl} onPick={pickPreset} disabled={picking} />}
 
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
@@ -143,6 +172,15 @@ export default function ProfilePage() {
           <div>
             <label className="label">{t("profile.major")}</label>
             <input className="input" value={major} onChange={(e) => setMajor(e.target.value)} />
+          </div>
+          <div>
+            <label className="label">{t("gender.label")}</label>
+            <select className="input" value={gender} onChange={(e) => setGender(e.target.value)}>
+              <option value="">{t("gender.none")}</option>
+              <option value="male">{t("gender.male")}</option>
+              <option value="female">{t("gender.female")}</option>
+              <option value="other">{t("gender.other")}</option>
+            </select>
           </div>
         </div>
 

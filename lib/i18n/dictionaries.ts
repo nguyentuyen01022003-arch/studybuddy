@@ -54,14 +54,16 @@ export const dictionaries = {
       avatar: "Ảnh đại diện",
       changeAvatar: "Đổi ảnh",
       uploading: "Đang tải ảnh lên...",
+      pickAvatar: "Chọn avatar có sẵn",
+      hidePicker: "Ẩn danh sách",
       subtitle: "Hồ sơ đầy đủ giúp gợi ý bạn học chính xác hơn.",
       name: "Họ và tên",
       school: "Trường",
       major: "Ngành học",
       subjects: "Môn học",
       subjectsHint: "Cách nhau bằng dấu phẩy, ví dụ: Toán, Tiếng Anh, Lập trình",
-      goals: "Mục tiêu học tập",
-      goalsPlaceholder: "Ví dụ: Ôn IELTS 7.0, qua môn Giải tích...",
+      goals: "Mục tiêu & phong cách học",
+      goalsPlaceholder: "Ví dụ: Ôn IELTS 7.0, thích học im lặng tập trung, thích vừa học vừa trò chuyện, học nhóm cuối tuần, Pomodoro 25 phút...",
       availableTime: "Thời gian rảnh",
       mode: "Hình thức học",
       online: "Online",
@@ -114,7 +116,7 @@ export const dictionaries = {
       respond: "Chờ bạn trả lời",
       connected: "Đã kết nối",
       chat: "Trò chuyện",
-      goals: "Mục tiêu",
+      goals: "Mục tiêu & phong cách",
       subjects: "Môn học"
     },
     connections: {
@@ -169,6 +171,22 @@ export const dictionaries = {
       terms: "Điều khoản sử dụng",
       privacy: "Chính sách quyền riêng tư",
       tagline: "Được tạo với 💗 dành cho người học"
+    },
+    feedback: {
+      button: "Góp ý",
+      title: "Góp ý cho StudyBuddy 💌",
+      desc: "Ý kiến của bạn giúp web ngày càng tốt hơn!",
+      placeholder: "Bạn muốn cải thiện điều gì? Tính năng nào còn thiếu?...",
+      send: "Gửi góp ý",
+      sending: "Đang gửi...",
+      thanks: "Cảm ơn bạn đã góp ý! 💗"
+    },
+    gender: {
+      label: "Giới tính",
+      male: "Nam",
+      female: "Nữ",
+      other: "Khác",
+      none: "Không muốn nói"
     },
     common: {
       loading: "Đang tải...",
@@ -229,14 +247,16 @@ export const dictionaries = {
       avatar: "Profile photo",
       changeAvatar: "Change photo",
       uploading: "Uploading...",
+      pickAvatar: "Pick a ready-made avatar",
+      hidePicker: "Hide list",
       subtitle: "A complete profile gets you better partner suggestions.",
       name: "Full name",
       school: "School",
       major: "Major",
       subjects: "Subjects",
       subjectsHint: "Comma separated, e.g.: Math, English, Programming",
-      goals: "Study goals",
-      goalsPlaceholder: "E.g.: IELTS 7.0, pass Calculus...",
+      goals: "Goals & study style",
+      goalsPlaceholder: "E.g.: IELTS 7.0, prefer quiet focused study, love chatting while studying, weekend group sessions, 25-min Pomodoro...",
       availableTime: "Available time",
       mode: "Study mode",
       online: "Online",
@@ -289,7 +309,7 @@ export const dictionaries = {
       respond: "Awaiting your reply",
       connected: "Connected",
       chat: "Chat",
-      goals: "Goals",
+      goals: "Goals & style",
       subjects: "Subjects"
     },
     connections: {
@@ -344,6 +364,22 @@ export const dictionaries = {
       terms: "Terms of Service",
       privacy: "Privacy Policy",
       tagline: "Made with 💗 for learners"
+    },
+    feedback: {
+      button: "Feedback",
+      title: "Feedback for StudyBuddy 💌",
+      desc: "Your ideas make the site better!",
+      placeholder: "What should we improve? What's missing?...",
+      send: "Send feedback",
+      sending: "Sending...",
+      thanks: "Thanks for your feedback! 💗"
+    },
+    gender: {
+      label: "Gender",
+      male: "Male",
+      female: "Female",
+      other: "Other",
+      none: "Prefer not to say"
     },
     common: {
       loading: "Loading...",

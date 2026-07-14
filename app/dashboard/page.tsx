@@ -33,8 +33,8 @@ export default function DashboardPage() {
       <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("dashboard.subtitle")}</p>
 
       {profileIncomplete && (
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 dark:bg-amber-900/40 p-4">
-          <p className="text-sm text-amber-800">💡 {t("dashboard.completeProfile")}</p>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-500/50 dark:bg-amber-500/10">
+          <p className="text-sm font-medium text-amber-800 dark:text-amber-200">💡 {t("dashboard.completeProfile")}</p>
           <Link href="/profile" className="btn-primary !py-1.5">
             {t("dashboard.completeProfileBtn")}
           </Link>

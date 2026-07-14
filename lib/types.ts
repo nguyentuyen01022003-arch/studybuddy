@@ -15,6 +15,7 @@ export interface Profile {
   study_mode: StudyMode | null;
   city: string | null;
   avatar_url?: string | null;
+  gender?: string | null;
   created_at?: string;
 }
 

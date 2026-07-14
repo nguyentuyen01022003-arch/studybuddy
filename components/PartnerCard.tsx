@@ -92,6 +92,15 @@ export default function PartnerCard({
             {modeLabel}
           </span>
         )}
+        {profile.gender && (
+          <span className="badge">
+            {profile.gender === "male"
+              ? `👦 ${t("gender.male")}`
+              : profile.gender === "female"
+                ? `👧 ${t("gender.female")}`
+                : t("gender.other")}
+          </span>
+        )}
         {profile.city && (
           <span className="inline-flex items-center rounded-full bg-amber-50 dark:bg-amber-900/40 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300">
             📍 {profile.city}

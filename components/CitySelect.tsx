@@ -14,6 +14,8 @@ import { useI18n } from "@/lib/i18n/LanguageContext";
 interface Props {
   city: string;
   onCityChange: (city: string) => void;
+  /** Bao cho cha biet khi doi quoc gia (dung cho bo loc tim kiem) */
+  onCountryChange?: (code: string) => void;
   /** Hien lua chon "Tat ca" (dung cho bo loc tim kiem) */
   allowAny?: boolean;
 }
@@ -140,11 +142,11 @@ function SearchDropdown({
   );
 }
 
-export default function CitySelect({ city, onCityChange, allowAny }: Props) {
+export default function CitySelect({ city, onCityChange, onCountryChange, allowAny }: Props) {
   const { t, lang } = useI18n();
   const initial = findLocationOf(city);
   const [country, setCountry] = useState<string>(
-    () => initial?.country ?? (lang === "en" ? "US" : "VN")
+    () => initial?.country ?? (allowAny ? "" : lang === "en" ? "US" : "VN")
   );
   const [stateCode, setStateCode] = useState<string>(() => initial?.stateCode ?? "");
 
@@ -210,6 +212,7 @@ export default function CitySelect({ city, onCityChange, allowAny }: Props) {
   function changeCountry(c: string) {
     setCountry(c);
     setStateCode("");
+    onCountryChange?.(c);
     if (city && findLocationOf(city)?.country !== c) onCityChange("");
   }
 
@@ -229,6 +232,7 @@ export default function CitySelect({ city, onCityChange, allowAny }: Props) {
         noResult={t("location.noResult")}
         options={countryOptions}
         onPick={changeCountry}
+        anyLabel={allowAny ? t("location.any") : undefined}
       />
 
       {isUS && (

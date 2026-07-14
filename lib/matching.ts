@@ -1,4 +1,5 @@
 import type { Profile } from "./types";
+import { findLocationOf } from "./locations";
 
 export interface PartnerFilters {
   subject?: string;
@@ -6,6 +7,8 @@ export interface PartnerFilters {
   city?: string;
   mode?: string; // "online" | "offline" | ""
   time?: string; // TimeSlot | ""
+  country?: string; // ma quoc gia, vd "VN"
+  gender?: string; // "male" | "female" | "other" | ""
 }
 
 const norm = (s: string | null | undefined) => (s ?? "").toLowerCase().trim();
@@ -18,6 +21,11 @@ export function matchesFilters(p: Profile, f: PartnerFilters): boolean {
   }
   if (f.major && !norm(p.major).includes(norm(f.major))) return false;
   if (f.city && !norm(p.city).includes(norm(f.city))) return false;
+  if (f.country) {
+    const loc = findLocationOf(p.city);
+    if (!loc || loc.country !== f.country) return false;
+  }
+  if (f.gender && p.gender !== f.gender) return false;
   if (f.mode) {
     if (p.study_mode && p.study_mode !== "both" && p.study_mode !== f.mode) return false;
   }

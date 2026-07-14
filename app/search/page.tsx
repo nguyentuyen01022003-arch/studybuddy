@@ -15,8 +15,10 @@ export default function SearchPage() {
     subject: "",
     major: "",
     city: "",
+    country: "",
     mode: "",
     time: "",
+    gender: "",
   });
 
   const set = (k: keyof PartnerFilters) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -50,7 +52,12 @@ export default function SearchPage() {
           <input className="input" value={filters.major} onChange={set("major")} />
         </div>
         <div className="sm:col-span-2">
-          <CitySelect city={filters.city ?? ""} onCityChange={(c) => setFilters((f) => ({ ...f, city: c }))} allowAny />
+          <CitySelect
+            city={filters.city ?? ""}
+            onCityChange={(c) => setFilters((f) => ({ ...f, city: c }))}
+            onCountryChange={(c) => setFilters((f) => ({ ...f, country: c }))}
+            allowAny
+          />
         </div>
         <div>
           <label className="label">{t("search.mode")}</label>
@@ -58,6 +65,15 @@ export default function SearchPage() {
             <option value="">{t("search.any")}</option>
             <option value="online">{t("profile.online")}</option>
             <option value="offline">{t("profile.offline")}</option>
+          </select>
+        </div>
+        <div>
+          <label className="label">{t("gender.label")}</label>
+          <select className="input" value={filters.gender} onChange={set("gender")}>
+            <option value="">{t("search.any")}</option>
+            <option value="male">{t("gender.male")}</option>
+            <option value="female">{t("gender.female")}</option>
+            <option value="other">{t("gender.other")}</option>
           </select>
         </div>
         <div>

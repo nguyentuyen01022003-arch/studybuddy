@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FeedbackWidget from "@/components/FeedbackWidget";
 
 const SITE_URL = "https://studybuddy-sigma-eight.vercel.app";
 const TITLE = "StudyBuddy — Find your study partner";
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main className="mx-auto min-h-[70vh] max-w-6xl px-4 py-8">{children}</main>
           <Footer />
+          <FeedbackWidget />
         </LanguageProvider>
         <Analytics />
       </body>

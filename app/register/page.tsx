@@ -17,12 +17,17 @@ export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [agree, setAgree] = useState(false);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
     setError(null);
     setInfo(null);
+    if (!agree) {
+      setError(t("auth.ageRequired"));
+      return;
+    }
+    setLoading(true);
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -80,6 +85,15 @@ export default function RegisterPage() {
             />
             <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t("auth.passwordHint")}</p>
           </div>
+          <label className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+            <input
+              type="checkbox"
+              checked={agree}
+              onChange={(e) => setAgree(e.target.checked)}
+              className="mt-0.5 h-4 w-4"
+            />
+            <span>{t("auth.ageConfirm")}</span>
+          </label>
           {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
           {info && <p className="rounded-lg bg-green-50 dark:bg-green-900/40 p-3 text-sm text-green-700 dark:text-green-300">{info}</p>}
           <button type="submit" disabled={loading} className="btn-primary w-full">

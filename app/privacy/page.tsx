@@ -13,7 +13,7 @@ const CONTENT = {
       },
       {
         h: "2. Mục đích sử dụng",
-        p: "Dữ liệu chỉ dùng để vận hành StudyBuddy: gợi ý bạn học phù hợp, hiển thị hồ sơ với người dùng khác, gửi/nhận tin nhắn, lên lịch học và cải thiện sản phẩm. Chúng tôi không bán dữ liệu của bạn cho bên thứ ba.",
+        p: "Dữ liệu chỉ dùng để vận hành StudyMate: gợi ý bạn học phù hợp, hiển thị hồ sơ với người dùng khác, gửi/nhận tin nhắn, lên lịch học và cải thiện sản phẩm. Chúng tôi không bán dữ liệu của bạn cho bên thứ ba.",
       },
       {
         h: "3. Ai nhìn thấy gì",
@@ -51,7 +51,7 @@ const CONTENT = {
       },
       {
         h: "2. How we use it",
-        p: "Data is used only to run StudyBuddy: suggesting compatible partners, showing your profile to other users, sending/receiving messages, scheduling sessions, and improving the product. We do not sell your data to third parties.",
+        p: "Data is used only to run StudyMate: suggesting compatible partners, showing your profile to other users, sending/receiving messages, scheduling sessions, and improving the product. We do not sell your data to third parties.",
       },
       {
         h: "3. Who sees what",

@@ -9,11 +9,11 @@ const CONTENT = {
     sections: [
       {
         h: "1. Chấp nhận điều khoản",
-        p: "Khi tạo tài khoản hoặc sử dụng StudyBuddy, bạn đồng ý với các điều khoản này. Nếu không đồng ý, vui lòng không sử dụng dịch vụ.",
+        p: "Khi tạo tài khoản hoặc sử dụng StudyMate, bạn đồng ý với các điều khoản này. Nếu không đồng ý, vui lòng không sử dụng dịch vụ.",
       },
       {
         h: "2. Dịch vụ",
-        p: "StudyBuddy là nền tảng miễn phí giúp người học tìm bạn học phù hợp theo môn học, ngành, thành phố và lịch rảnh; kết nối, trò chuyện và lên lịch học cùng nhau.",
+        p: "StudyMate là nền tảng miễn phí giúp người học tìm bạn học phù hợp theo môn học, ngành, thành phố và lịch rảnh; kết nối, trò chuyện và lên lịch học cùng nhau.",
       },
       {
         h: "3. Tài khoản",
@@ -21,11 +21,11 @@ const CONTENT = {
       },
       {
         h: "4. Quy tắc ứng xử",
-        p: "Không quấy rối, lừa đảo, mạo danh, gửi nội dung khiêu dâm, thù ghét, bạo lực hoặc spam. Không dùng StudyBuddy cho mục đích thương mại trái phép. Vi phạm có thể dẫn đến khoá tài khoản vĩnh viễn.",
+        p: "Không quấy rối, lừa đảo, mạo danh, gửi nội dung khiêu dâm, thù ghét, bạo lực hoặc spam. Không dùng StudyMate cho mục đích thương mại trái phép. Vi phạm có thể dẫn đến khoá tài khoản vĩnh viễn.",
       },
       {
         h: "5. Nội dung của bạn",
-        p: "Bạn giữ quyền sở hữu nội dung mình đăng (hồ sơ, tin nhắn, ảnh đại diện) và chịu trách nhiệm về nội dung đó. Bạn cho phép StudyBuddy lưu trữ và hiển thị nội dung nhằm vận hành dịch vụ.",
+        p: "Bạn giữ quyền sở hữu nội dung mình đăng (hồ sơ, tin nhắn, ảnh đại diện) và chịu trách nhiệm về nội dung đó. Bạn cho phép StudyMate lưu trữ và hiển thị nội dung nhằm vận hành dịch vụ.",
       },
       {
         h: "6. An toàn",
@@ -33,7 +33,7 @@ const CONTENT = {
       },
       {
         h: "7. Miễn trừ trách nhiệm",
-        p: "Dịch vụ được cung cấp \"nguyên trạng\". StudyBuddy không đảm bảo kết quả học tập và không chịu trách nhiệm cho tương tác giữa người dùng ngoài nền tảng.",
+        p: "Dịch vụ được cung cấp \"nguyên trạng\". StudyMate không đảm bảo kết quả học tập và không chịu trách nhiệm cho tương tác giữa người dùng ngoài nền tảng.",
       },
       {
         h: "8. Thay đổi",
@@ -51,11 +51,11 @@ const CONTENT = {
     sections: [
       {
         h: "1. Acceptance",
-        p: "By creating an account or using StudyBuddy, you agree to these terms. If you do not agree, please do not use the service.",
+        p: "By creating an account or using StudyMate, you agree to these terms. If you do not agree, please do not use the service.",
       },
       {
         h: "2. The service",
-        p: "StudyBuddy is a free platform that helps learners find compatible study partners by subject, major, city and schedule; connect, chat and plan study sessions together.",
+        p: "StudyMate is a free platform that helps learners find compatible study partners by subject, major, city and schedule; connect, chat and plan study sessions together.",
       },
       {
         h: "3. Accounts",
@@ -67,7 +67,7 @@ const CONTENT = {
       },
       {
         h: "5. Your content",
-        p: "You own the content you post (profile, messages, avatar) and are responsible for it. You grant StudyBuddy permission to store and display it in order to operate the service.",
+        p: "You own the content you post (profile, messages, avatar) and are responsible for it. You grant StudyMate permission to store and display it in order to operate the service.",
       },
       {
         h: "6. Safety",
@@ -75,7 +75,7 @@ const CONTENT = {
       },
       {
         h: "7. Disclaimer",
-        p: "The service is provided \"as is\". StudyBuddy does not guarantee study outcomes and is not responsible for interactions between users outside the platform.",
+        p: "The service is provided \"as is\". StudyMate does not guarantee study outcomes and is not responsible for interactions between users outside the platform.",
       },
       {
         h: "8. Changes",

@@ -1,4 +1,4 @@
-# StudyBuddy 📚
+# StudyMate 📚
 
 Ứng dụng tìm bạn học — Next.js 14 + Supabase + Tailwind CSS. Song ngữ Việt/Anh.
 

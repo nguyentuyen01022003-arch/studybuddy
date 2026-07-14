@@ -1,5 +1,5 @@
 -- ===========================================================
--- StudyBuddy - Supabase schema
+-- StudyMate - Supabase schema
 -- Chay toan bo file nay trong SQL Editor cua Supabase
 -- ===========================================================
 

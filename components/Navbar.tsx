@@ -122,7 +122,7 @@ export default function Navbar() {
         <Link href={user ? "/dashboard" : "/"} className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-accent-500 text-lg shadow-cute">📚</span>
           <span className="text-lg font-bold text-slate-900 dark:text-slate-100">
-            Study<span className="text-brand-600">Buddy</span>
+            Study<span className="text-brand-600">Mate</span>
           </span>
         </Link>
 

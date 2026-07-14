@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import FeedbackWidget from "@/components/FeedbackWidget";
 
 const SITE_URL = "https://studybuddy-sigma-eight.vercel.app";
-const TITLE = "StudyBuddy — Find your study partner";
+const TITLE = "StudyMate — Find your study partner";
 const DESCRIPTION =
   "Find study partners by subject, major, city and schedule. Tìm bạn học theo môn, ngành, thành phố và giờ rảnh.";
 
@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
-  keywords: ["study partner", "study buddy", "bạn học", "tìm bạn học", "học nhóm", "students"],
+  keywords: ["study partner", "study mate", "studymate", "study buddy", "bạn học", "tìm bạn học", "học nhóm", "students"],
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "StudyBuddy",
+    siteName: "StudyMate",
     title: TITLE,
     description: DESCRIPTION,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "StudyBuddy" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "StudyMate" }],
   },
   twitter: {
     card: "summary_large_image",

@@ -16,7 +16,7 @@ export const dictionaries = {
     landing: {
       heroTitle: "Tìm bạn học lý tưởng của bạn",
       heroSubtitle:
-        "StudyBuddy kết nối bạn với những người học cùng môn, cùng mục tiêu — học online hoặc gặp trực tiếp tại thành phố của bạn.",
+        "StudyMate kết nối bạn với những người học cùng môn, cùng mục tiêu — học online hoặc gặp trực tiếp tại thành phố của bạn.",
       ctaStart: "Bắt đầu miễn phí",
       ctaLogin: "Tôi đã có tài khoản",
       f1Title: "Ghép đôi thông minh",
@@ -183,7 +183,7 @@ export const dictionaries = {
     },
     feedback: {
       button: "Góp ý",
-      title: "Góp ý cho StudyBuddy 💌",
+      title: "Góp ý cho StudyMate 💌",
       desc: "Ý kiến của bạn giúp web ngày càng tốt hơn!",
       placeholder: "Bạn muốn cải thiện điều gì? Tính năng nào còn thiếu?...",
       send: "Gửi góp ý",
@@ -218,7 +218,7 @@ export const dictionaries = {
     landing: {
       heroTitle: "Find your perfect study partner",
       heroSubtitle:
-        "StudyBuddy connects you with people who study the same subjects and share your goals — online or in person in your city.",
+        "StudyMate connects you with people who study the same subjects and share your goals — online or in person in your city.",
       ctaStart: "Get started free",
       ctaLogin: "I already have an account",
       f1Title: "Smart matching",
@@ -385,7 +385,7 @@ export const dictionaries = {
     },
     feedback: {
       button: "Feedback",
-      title: "Feedback for StudyBuddy 💌",
+      title: "Feedback for StudyMate 💌",
       desc: "Your ideas make the site better!",
       placeholder: "What should we improve? What's missing?...",
       send: "Send feedback",

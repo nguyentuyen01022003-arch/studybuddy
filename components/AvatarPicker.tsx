@@ -2,9 +2,9 @@
 
 const BG = "b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf";
 const STYLES: Array<[string, string[]]> = [
-  ["big-smile", ["Milo", "Luna", "Coco", "Bubbles", "Peanut", "Mochi", "Sunny", "Boo"]],
-  ["fun-emoji", ["Pumpkin", "Jelly", "Ziggy", "Nova", "Pip", "Waffles", "Dusty", "Momo"]],
-  ["bottts", ["Chip", "Bolt", "Gizmo", "Robo", "Pixel", "Turbo", "Beep", "Widget"]],
+  ["adventurer", ["Milo", "Luna", "Coco", "Hana", "Peanut", "Mochi", "Sunny", "Bao"]],
+  ["lorelei", ["Rosie", "Jelly", "Ziggy", "Nova", "Pip", "Mai", "Dusty", "Momo"]],
+  ["micah", ["Chip", "Minh", "Gizmo", "An", "Pixel", "Tuan", "Bee", "Willow"]],
 ];
 
 export const PRESET_AVATARS: string[] = STYLES.flatMap(([style, seeds]) =>

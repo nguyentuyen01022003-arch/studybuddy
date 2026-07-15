@@ -85,7 +85,14 @@ export const dictionaries = {
       both: "Cả hai",
       city: "Thành phố",
       save: "Lưu hồ sơ",
-      saved: "Đã lưu hồ sơ!"
+      saved: "Đã lưu hồ sơ!",
+      dangerZone: "Vùng nguy hiểm",
+      deleteAccount: "Xóa tài khoản",
+      deleteDesc: "Xóa vĩnh viễn tài khoản và toàn bộ dữ liệu của bạn (hồ sơ, kết nối, tin nhắn, lịch học). Hành động này không thể hoàn tác.",
+      deleteConfirmBtn: "Tôi hiểu, xóa vĩnh viễn",
+      deleteCancel: "Hủy",
+      deleting: "Đang xóa...",
+      deleteError: "Không xóa được tài khoản. Vui lòng thử lại."
     },
     location: {
       country: "Quốc gia",
@@ -301,7 +308,14 @@ export const dictionaries = {
       both: "Both",
       city: "City",
       save: "Save profile",
-      saved: "Profile saved!"
+      saved: "Profile saved!",
+      dangerZone: "Danger zone",
+      deleteAccount: "Delete account",
+      deleteDesc: "Permanently delete your account and all your data (profile, connections, messages, sessions). This action cannot be undone.",
+      deleteConfirmBtn: "I understand, delete permanently",
+      deleteCancel: "Cancel",
+      deleting: "Deleting...",
+      deleteError: "Couldn't delete your account. Please try again."
     },
     location: {
       country: "Country",

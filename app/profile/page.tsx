@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useI18n } from "@/lib/i18n/LanguageContext";
 import { TIME_SLOTS, type Profile, type StudyMode } from "@/lib/types";
@@ -10,6 +11,7 @@ import AvatarPicker from "@/components/AvatarPicker";
 
 export default function ProfilePage() {
   const { t } = useI18n();
+  const router = useRouter();
   const supabase = useMemo(() => createClient(), []);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -30,6 +32,9 @@ export default function ProfilePage() {
   const [uploading, setUploading] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
   const [picking, setPicking] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -129,6 +134,20 @@ export default function ProfilePage() {
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     }
+  }
+
+  async function onDeleteAccount() {
+    setDeleting(true);
+    setDeleteError(null);
+    const { error } = await supabase.rpc("delete_user");
+    if (error) {
+      setDeleteError(t("profile.deleteError"));
+      setDeleting(false);
+      return;
+    }
+    await supabase.auth.signOut();
+    router.push("/");
+    router.refresh();
   }
 
   if (loading) return <p className="text-slate-500 dark:text-slate-400">{t("common.loading")}</p>;
@@ -249,6 +268,40 @@ export default function ProfilePage() {
           {saving ? t("common.loading") : t("profile.save")}
         </button>
       </form>
+
+      <div className="card mt-6 border-red-200 dark:border-red-900/50">
+        <h2 className="text-lg font-bold text-red-600 dark:text-red-400">{t("profile.dangerZone")}</h2>
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{t("profile.deleteDesc")}</p>
+        {deleteError && <p className="mt-3 text-sm text-red-600 dark:text-red-400">{deleteError}</p>}
+        {!confirmDelete ? (
+          <button
+            type="button"
+            onClick={() => setConfirmDelete(true)}
+            className="mt-4 rounded-xl border border-red-300 dark:border-red-800 px-4 py-2 text-sm font-semibold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition"
+          >
+            {t("profile.deleteAccount")}
+          </button>
+        ) : (
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={onDeleteAccount}
+              disabled={deleting}
+              className="rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-60 transition"
+            >
+              {deleting ? t("profile.deleting") : t("profile.deleteConfirmBtn")}
+            </button>
+            <button
+              type="button"
+              onClick={() => setConfirmDelete(false)}
+              disabled={deleting}
+              className="btn-secondary"
+            >
+              {t("profile.deleteCancel")}
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

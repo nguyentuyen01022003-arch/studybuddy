@@ -218,6 +218,23 @@ export const dictionaries = {
       other: "Khác",
       none: "Không muốn nói"
     },
+    admin: {
+      title: "Kiểm duyệt báo cáo",
+      desc: "Xem và xử lý các báo cáo vi phạm từ người dùng.",
+      deniedTitle: "Không có quyền truy cập",
+      deniedDesc: "Trang này chỉ dành cho quản trị viên.",
+      filter_open: "Chưa xử lý",
+      filter_resolved: "Đã xử lý",
+      filter_all: "Tất cả",
+      open: "chưa xử lý",
+      empty: "Không có báo cáo nào.",
+      reported: "đã báo cáo",
+      noReason: "(Không có lý do)",
+      statusOpen: "Chưa xử lý",
+      statusResolved: "Đã xử lý",
+      markResolved: "Đánh dấu đã xử lý",
+      reopen: "Mở lại"
+    },
     common: {
       loading: "Đang tải...",
       close: "Đóng",
@@ -440,6 +457,23 @@ export const dictionaries = {
       female: "Female",
       other: "Other",
       none: "Prefer not to say"
+    },
+    admin: {
+      title: "Report moderation",
+      desc: "Review and handle user reports.",
+      deniedTitle: "Access denied",
+      deniedDesc: "This page is for administrators only.",
+      filter_open: "Open",
+      filter_resolved: "Resolved",
+      filter_all: "All",
+      open: "open",
+      empty: "No reports found.",
+      reported: "reported",
+      noReason: "(No reason given)",
+      statusOpen: "Open",
+      statusResolved: "Resolved",
+      markResolved: "Mark as resolved",
+      reopen: "Reopen"
     },
     common: {
       loading: "Loading...",

@@ -18,6 +18,9 @@ const LINKS = [
   { href: "/profile", key: "nav.profile" },
 ];
 
+// Giu dong bo voi ADMIN_EMAILS trong app/admin/reports/page.tsx
+const ADMIN_EMAILS = ["nguyentuyen01022003@gmail.com"];
+
 function CountBadge({ count }: { count: number }) {
   if (count <= 0) return null;
   return (
@@ -116,6 +119,11 @@ export default function Navbar() {
 
   const totalBadges = pendingCount + unreadCount;
 
+  const navLinks =
+    user?.email && ADMIN_EMAILS.includes(user.email.toLowerCase())
+      ? [...LINKS, { href: "/admin/reports", key: "nav.admin" }]
+      : LINKS;
+
   return (
     <header className="sticky top-0 z-40 border-b-2 border-brand-100/70 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
       <div className="mx-auto flex max-w-6xl items-center gap-x-4 px-4 py-3">
@@ -128,7 +136,7 @@ export default function Navbar() {
 
         {user && (
           <nav className="hidden flex-1 flex-wrap gap-1 sm:flex">
-            {LINKS.map((l) => (
+            {navLinks.map((l) => (
               <Link key={l.href} href={l.href} className={linkClass(l.href)}>
                 {t(l.key)}
                 {badgeFor(l.href)}
@@ -173,7 +181,7 @@ export default function Navbar() {
 
       {user && open && (
         <nav className="flex flex-col gap-1 border-t-2 border-brand-100/70 px-4 py-3 dark:border-slate-800 sm:hidden">
-          {LINKS.map((l) => (
+          {navLinks.map((l) => (
             <Link key={l.href} href={l.href} className={linkClass(l.href)}>
               {t(l.key)}
               {badgeFor(l.href)}

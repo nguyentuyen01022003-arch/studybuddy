@@ -9,6 +9,7 @@ export const dictionaries = {
       chat: "Trò chuyện",
       sessions: "Lịch học",
       profile: "Hồ sơ",
+      admin: "Kiểm duyệt",
       login: "Đăng nhập",
       register: "Đăng ký",
       logout: "Đăng xuất"
@@ -249,6 +250,7 @@ export const dictionaries = {
       chat: "Chat",
       sessions: "Sessions",
       profile: "Profile",
+      admin: "Moderation",
       login: "Log in",
       register: "Sign up",
       logout: "Log out"

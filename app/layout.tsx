@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FeedbackWidget from "@/components/FeedbackWidget";
 
-const SITE_URL = "https://studybuddy-sigma-eight.vercel.app";
+const SITE_URL = "https://studymateapp.com";
 const TITLE = "StudyMate — Find your study partner";
 const DESCRIPTION =
   "Find study partners by subject, major, city and schedule. Tìm bạn học theo môn, ngành, thành phố và giờ rảnh.";
